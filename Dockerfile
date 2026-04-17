@@ -2,15 +2,15 @@ FROM alpine:3.18 AS runtime_amd64_none
 ENV MUSL_LOCPATH="/usr/share/i18n/locales/musl"
 RUN apk update && apk add --no-cache tzdata musl-locales musl-locales-lang
 WORKDIR /app
-COPY dist/icloud-*.*.*-linux-musl-amd64 icloud
-COPY dist/icloudpd-*.*.*-linux-musl-amd64 icloudpd
+COPY dist/icloud icloud
+COPY dist/icloudpd icloudpd
 
 FROM alpine:3.18 AS runtime_arm64_none
 ENV MUSL_LOCPATH="/usr/share/i18n/locales/musl"
 RUN apk update && apk add --no-cache tzdata musl-locales musl-locales-lang
 WORKDIR /app
-COPY dist/icloud-*.*.*-linux-musl-arm64 icloud
-COPY dist/icloudpd-*.*.*-linux-musl-arm64 icloudpd
+COPY dist/icloud icloud
+COPY dist/icloudpd icloudpd
 
 FROM alpine:3.18 AS runtime_arm_v7
 ENV MUSL_LOCPATH="/usr/share/i18n/locales/musl"
